@@ -129,15 +129,10 @@ func main() {
 	}
 	battery.Right = level
 
-	lowestLevel := battery.Left
-	if battery.Right < lowestLevel {
-		lowestLevel = battery.Right
-	}
-
 	output := WaybarOutput{
 		Text:       fmt.Sprintf("L:%d%% R:%d%%", battery.Left, battery.Right),
 		Tooltip:    fmt.Sprintf("Left side: %d%%\rRight side: %d%%", battery.Left, battery.Right),
-		Percentage: lowestLevel,
+		Percentage: min(battery.Left, battery.Right),
 	}
 
 	if battery.Left < 20 || battery.Right < 20 {
