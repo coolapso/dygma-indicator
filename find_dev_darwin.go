@@ -58,7 +58,7 @@ func findKeyboardDev() (string, error) {
 		// Check if the cleaned ID is in our shared 'vendorIds' slice.
 		if slices.Contains(vendorIds, cleanVid) {
 			// The serial number field for USB modems on macOS often contains the device path.
-			if strings.HasPrefix(d.SerialNum, "/dev/cu.usbmodem") {
+			if strings.HasPrefix(d.SerialNum, "/dev/tty.usbmodem") {
 				return d.SerialNum, nil
 			}
 		}
