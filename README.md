@@ -53,6 +53,9 @@ curl -L https://dygma-indicator.coolapso.sh/install.sh | VERSION="v1.1.0" bash
 * Extract the binary
 * Execute it
 
+> [!WARNING]
+> Device detection on MacOS is entirely vibe coded as I have no clue how macs work! If you have a mac and want to make it better, feel free to contribute!
+
 ## Usage
 
 At the moment there's nothing speciall about it, just execute it and it will print the battery level to standard output.
