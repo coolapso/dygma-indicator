@@ -1,0 +1,26 @@
+# .goreleaser.yaml
+builds:
+  - binary: dygma-indicator
+    env:
+      - CGO_ENABLED=0
+
+aurs:
+  - name: dygma-indicator-bin
+    homepage: "https://github.com/coolapso/dygma-indicator"
+    description: "A simple CLI utility to get the battery level of Dygma keyboards"
+    maintainers:
+      - "coolapso <coolapso@coolapso.tech>"
+
+    license: "MIT"
+    private_key: "{{ .Env.AUR_KEY }}"
+    git_url: "ssh://aur@aur.archlinux.org/dygma-indicator-bin.git"
+    skip_upload: auto
+
+    # Git author used to commit to the repository.
+    commit_author:
+      name: goreleaserbot
+      email: bot@goreleaser.com
+
+announce:
+  discord:
+    enabled: true

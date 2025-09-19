@@ -1,0 +1,6 @@
+version: "3"
+
+tasks:
+  build:
+    cmds:
+      - go CGO_ENABLED=0 build -o ./dygma-indicator .
