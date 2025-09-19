@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/coolapso/dygma-indicator/blob/main/img/Logo.png" width="200" >
+  <img src="https://github.com/coolapso/dygma-indicator/blob/main/img/Logo.png" width="400" >
 </p>
 
 # Dygma Indicator
@@ -98,3 +98,13 @@ To use this with `waybar`, add the following configuration to your `config` file
 
 > [!IMPORTANT]
 > The serial protocol used by the keyboard can only be used by one application at a time. It is recommended to set a reasonably high `interval` (e.g., 3600 seconds) to avoid blocking other applications like Bazecor when you need to use them.
+
+# Contributions
+
+Improvements and suggestions are always welcome, feel free to check for any open issues, open a new Issue or Pull Request
+
+If you like this project and want to support / contribute in a different way you can always [:heart: Sponsor Me](https://github.com/sponsors/coolapso) or
+
+<a href="https://www.buymeacoffee.com/coolapso" target="_blank">
+  <img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" alt="Buy Me A Coffee" style="height: 51px !important;width: 217px !important;" />
+</a>
