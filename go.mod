@@ -1,4 +1,4 @@
-module dygbat
+module dygma-indicator
 
 go 1.25.1
 
