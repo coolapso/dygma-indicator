@@ -7,7 +7,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Variables
-REPO="coolapso/megophone"
+REPO="coolapso/dygma-indicator"
 VERSION=${VERSION:-"latest"}
 INSTALL_DIR="/usr/local/bin"
 
@@ -15,20 +15,20 @@ INSTALL_DIR="/usr/local/bin"
 OS=$(uname | tr '[:upper:]' '[:lower:]')
 ARCH=$(uname -m)
 if [[ "$ARCH" == "x86_64" ]]; then
-    ARCH="amd64"
+  ARCH="amd64"
 elif [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
-    ARCH="arm64"
+  ARCH="arm64"
 elif [[ "$ARCH" == "i386" || "$ARCH" == "i686" ]]; then
-    ARCH="386"
+  ARCH="386"
 fi
 
 # Fetch the latest release if no version is specified
 if [[ "$VERSION" == "latest" ]]; then
-    VERSION=$(curl -s "https://api.github.com/repos/$REPO/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+  VERSION=$(curl -s "https://api.github.com/repos/$REPO/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
 fi
 
 # Download URL for the release file and checksum
-FILE="megophone_${VERSION:1}_${OS}_${ARCH}.tar.gz"
+FILE="dygma-indicator_${VERSION:1}_${OS}_${ARCH}.tar.gz"
 FILE_URL="https://github.com/$REPO/releases/download/$VERSION/$FILE"
 
 # Download the file and checksum
@@ -44,13 +44,13 @@ if ! tar xzf "$FILE"; then
 fi
 
 ## Install the binary
-if ! chmod +x megophone; then
-  echo "Failed to make megophone executable"
+if ! chmod +x dygma-indicator; then
+  echo "Failed to make dygma-indicator executable"
   exit 1
 fi
 
-if ! mv megophone "$INSTALL_DIR" ; then
-  echo "Failed to move megophone to $INSTALL_DIR"
+if ! mv dygma-indicator "$INSTALL_DIR"; then
+  echo "Failed to move dygma-indicator to $INSTALL_DIR"
   exit 1
 fi
 
