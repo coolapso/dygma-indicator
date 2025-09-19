@@ -7,11 +7,15 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"slices"
 	"strconv"
 	"strings"
 
 	"go.bug.st/serial"
+	"go.bug.st/serial/enumerator"
 )
+
+var vendorIds = []string{"1209", "35ef"}
 
 type batteryLevel struct {
 	Left  int `json:"left"`
@@ -23,6 +27,25 @@ type WaybarOutput struct {
 	Tooltip    string `json:"tooltip"`
 	Class      string `json:"class,omitempty"`
 	Percentage int    `json:"percentage"`
+}
+
+func findKeyboardDev() (error, string) {
+	ports, err := enumerator.GetDetailedPortsList()
+	if err != nil {
+		return err, ""
+	}
+
+	if len(ports) == 0 {
+		return fmt.Errorf("dygma defy or raise 2 keyboard not found"), ""
+	}
+
+	for _, port := range ports {
+		if slices.Contains(vendorIds, port.VID) {
+			return nil, port.Name
+		}
+	}
+
+	return fmt.Errorf("No device found"), ""
 }
 
 func readFromPort(ctx context.Context, port serial.Port, ch chan<- int, errCh chan<- error) {
@@ -72,8 +95,12 @@ func getBatteryLevel(port serial.Port, side string, ch <-chan int, errCh <-chan 
 }
 
 func main() {
+	err, dev := findKeyboardDev()
+	if err != nil {
+		log.Fatal("Could not find keyboard:", err)
+	}
 	mode := &serial.Mode{BaudRate: 9600}
-	port, err := serial.Open("/dev/ttyACM0", mode)
+	port, err := serial.Open(dev, mode)
 	if err != nil {
 		log.Fatal("failed to open port:", err)
 	}
