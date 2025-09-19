@@ -17,6 +17,8 @@ It is designed to work with status bars like `waybar`, but its simple JSON outpu
 
 ## Installation
 
+This tool is mainly intended for and tested on linux, but it may work on other platforms as well!
+
 ### AUR
 
 On Arch linux you can use the AUR `dygma-indicator-bin`
