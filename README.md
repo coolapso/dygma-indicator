@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/coolapso/dygma-indicator/blob/main/img/logo.png" width="200" >
+  <img src="https://github.com/coolapso/dygma-indicator/blob/main/img/Logo.png" width="200" >
 </p>
 
 # Dygma Indicator
@@ -73,7 +73,7 @@ The application outputs a JSON object with the battery percentage and a correspo
 ### Waybar
 
 <p align="center">
-  <img src="https://github.com/coolapso/dygma-indicator/blob/main/img/waybar.png">
+  <img src="https://github.com/coolapso/dygma-indicator/blob/main/img/waybar.jpg">
 </p>
 
 To use this with `waybar`, add the following configuration to your `config` file.
