@@ -1,6 +1,9 @@
 # .goreleaser.yaml
 builds:
   - binary: dygma-indicator
+    goos:
+      - darwin
+      - linux
     env:
       - CGO_ENABLED=0
 
